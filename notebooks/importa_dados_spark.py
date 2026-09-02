@@ -11,6 +11,7 @@ spark = SparkSession.builder \
         .config("spark.driver.maxResultSize", "4g") \
         .config("spark.sql.shuffle.partitions", "4") \
         .getOrCreate()
+spark.sparkContext.setLogLevel("ERROR")
 
 
 sinistros = spark.read.csv('dados/sinistros_2022-2024.csv', encoding='ISO-8859-1', sep=';', header=True)\
