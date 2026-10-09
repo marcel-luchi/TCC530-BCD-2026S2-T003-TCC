@@ -16,9 +16,9 @@ def trata_sinistros(df: pl.DataFrame) -> pl.DataFrame:
         .pipe(cria_coluna_sinistro_fatal)
         .pipe(trata_rodovia_castelo_branco)
         .pipe(trata_populacao)
-        .pipe(set_enum_columns)
         .pipe(cast_datas)
         .pipe(trata_veiculos_presentes)
+        .pipe(set_enum_columns)
     )
         
 
