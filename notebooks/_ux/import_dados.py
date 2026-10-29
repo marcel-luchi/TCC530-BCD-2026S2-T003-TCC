@@ -27,7 +27,7 @@ def read_pessoas_raw() -> pl.DataFrame:
 
     sinistros = read_sinistros().select('id_sinistro', 'tipo_via')
 
-    return pl.concat([pessoas_24, pessoas_25]).drop('tipo_via').join(sinistros, on='id_sinistro')
+    return pl.concat([pessoas_24, pessoas_25], how='vertical_relaxed').drop('tipo_via').join(sinistros, on='id_sinistro')
 
 def read_pessoas() -> pl.DataFrame:
     return read_pessoas_raw().pipe(trata_pessoas)
